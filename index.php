@@ -1,7 +1,10 @@
 <?php
 
+require_once ('vendor/autoload.php');
 
-require_once 'autoload/autoloader.php';
+
+use src\Database;
+
 
 $db = Database::getInstance();
 $conn = $db->getConnection();
@@ -12,7 +15,7 @@ $rows = $stmt->fetchAll();
 
 
 foreach ($rows as $row){
-    echo "SKU : " . $row['SKU'] . "<br>" . "name : " . $row["name"] . "<br>" . "price :" . $row['price'] . "<br>";
+    echo "SKU : " . $row['sku'] . "<br>" . "name : " . $row["name"] . "<br>" . "price :" . $row['price'] . "<br>";
     echo "<br>";
 
 }

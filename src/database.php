@@ -1,5 +1,9 @@
-
 <?php
+namespace src;
+
+
+use PDO;
+use PDOException;
 
 class Database
 {

@@ -1,0 +1,16 @@
+{
+    "name": "i_vas/scandiweb",
+    "autoload": {
+        "psr-4": {
+            "IVas\\Scandiweb\\": "src/",
+            "src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "YourPuppeteer",
+            "email": "mr.dovakin1998@mail.ru"
+        }
+    ],
+    "require": {}
+}
