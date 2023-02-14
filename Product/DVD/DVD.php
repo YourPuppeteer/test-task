@@ -30,7 +30,7 @@ class DVD extends Product{
     public function getProduct()
     {
         // TODO: Implement getProduct() method.
-        return "SKU:" .  $this->getSKU() .  " Name: " . $this->getName() . " Price: " . $this->getPrice() . " Weight: ". $this->getTypeValue();
+        return "SKU:" .  $this->getSKU() .  "/" . $this->getName() . "/" . $this->getPrice() ." $". "/" . "Size: " .$this->getTypeValue();
 
     }
 }
