@@ -50,4 +50,15 @@ main {
   width: 100%;
 }
 
+.form_inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.add_button {
+  color: transparent;
+  cursor: auto;
+  text-decoration: none;
+}
+
 /*# sourceMappingURL=style.css.map */

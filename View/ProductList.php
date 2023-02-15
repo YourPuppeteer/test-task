@@ -25,7 +25,9 @@ $fetch = new ProductFetcher();
             <header>
                 <h1>Product List</h1>
                 <div class="actions">
-                    <button type="button" > ADD</button>
+
+                    <button  type="button" onclick="window.location.href='ProductForm.php';">ADD</button>
+
                     <button  type="submit" id="delete-product-btn" name="delete-product-btn">MASS DELETE</button>
                 </div>
             </header>

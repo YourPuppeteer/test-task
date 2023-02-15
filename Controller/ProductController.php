@@ -19,11 +19,11 @@ if (isset($_POST['selected_products'])) {
         $stmt->bindValue(':sku', $skuValue);
         $stmt->execute();
     }
-    header('Location: ../View/product.php');
+    header('Location: ../View/ProductList.php');
     exit();
 }
 else{
-    header('Location: ../View/product.php');
+    header('Location: ../View/ProductList.php');
     exit();
 }
 
