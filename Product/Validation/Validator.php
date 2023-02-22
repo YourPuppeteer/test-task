@@ -23,9 +23,19 @@ class Validator {
         $this->validateTypeValue($typeValue);
 
         // Throw an exception if there are any errors
+
         if (!empty($this->errors)) {
-            throw new Exception('Validation errors: ' . implode(', ', $this->errors));
+            $errorMessages = implode(', ', $this->errors);
+            //$errorMessages = $this->errors;
+
+                return $errorMessages;
+
+            //throw new Exception('Validation errors: ' . implode(', ', $this->errors));
+
+
         }
+
+
 
         // Return the validated inputs as an array
         return [
@@ -36,6 +46,7 @@ class Validator {
             'typeValue' => $typeValue
         ];
     }
+
 
     private function validateSku($sku) {
         // Check if the SKU is not empty
@@ -62,9 +73,11 @@ class Validator {
 
     private function validatePrice($price) {
 
-        if (!is_integer($price) || $price <= 0) {
+        $values = (float) $price;
+
+        if ($values <= 0) {
             $this->errors['price'] = 'Price must be a number.';
-            var_dump($price);
+
         }
     }
 
@@ -79,15 +92,15 @@ class Validator {
 
     private function validateTypeValue($typeValue) {
 
-        if (!is_integer($typeValue) || $typeValue <= 0) {
 
-        }
             $values = explode('x', $typeValue);
 
-            foreach ($values as $value) {
-                if (!is_integer($value) || $value <= 0) {
-                    $this->errors['typeValue'] = 'TypeValue dimensions must be number.';
 
+
+
+            foreach ($values as $value) {
+                if ( $value <= 0) {
+                    $this->errors['typeValue'] = 'TypeValue dimensions must be number.';
                 }
             }
     }

@@ -1,13 +1,37 @@
 <?php
 namespace View;
 require_once ('../vendor/autoload.php');
+session_start();
 
+use Controller\ProductController;
 use Product\ProductFetcher\ProductFetcher;
 use Product\Main\Product;
+use Product\Validation\Validator;
+use Controller\FormController;
 
 $fetch = new ProductFetcher();
 
+if (isset($_SESSION['form_errors'])) {
+    $errorMessages = $_SESSION['form_errors'];
+    $errorArray = explode(", ", $errorMessages);
+
+    echo '<ul>';
+    var_dump($errorMessages);
+    foreach ($errorArray as $errorMessage){
+        echo "<li>$errorMessage</li>";
+    }
+
+
+
+    echo '</ul>';
+    // clear the session variable so the error messages don't persist after the page is reloaded
+    unset($_SESSION['form_errors']);
+}
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html>

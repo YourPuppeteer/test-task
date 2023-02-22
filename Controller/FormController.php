@@ -1,6 +1,7 @@
 <?php
 
 namespace Controller;
+session_start();
 
 require_once('../vendor/autoload.php');
 
@@ -17,6 +18,7 @@ class FormController {
 
     private $db;
     private $validator;
+    //private $errors;
 
     public function __construct() {
         $this->db = Database::getInstance()->getConnection();
@@ -25,12 +27,28 @@ class FormController {
     }
 
     public function addProduct($sku, $name, $price, $productType, $typeValue) {
-        var_dump($typeValue);
+
 
 
 
         //Validation
         $validatedInputs = $this->validator->validate($sku, $name, $price, $productType, $typeValue);
+        //
+
+        var_dump($validatedInputs);
+
+        if(is_string($validatedInputs)){
+            echo $this->$validatedInputs;
+            $_SESSION['form_errors'] = $validatedInputs;
+            header('Location: ../View/ProductForm.php');
+            exit();
+
+        }
+
+
+
+
+
 
         // Insert to database
         $sql = "INSERT INTO products (SKU, Name, Price, Type, TypeValue) VALUES (:sku, :name, :price, :type, :typeValue)";
@@ -65,6 +83,7 @@ $dimensionsMap = [
 $typeValue = $dimensionsMap[$productType] ?? '';
 
 $formController->addProduct($sku, $name, $price, $productType, $typeValue);
+
 
 
 header('Location: ../View/ProductList.php');
