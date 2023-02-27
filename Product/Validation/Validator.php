@@ -25,26 +25,27 @@ class Validator {
         // Throw an exception if there are any errors
 
         if (!empty($this->errors)) {
-            $errorMessages = implode(', ', $this->errors);
+            //$errorMessages = implode(', ', $this->errors);
             //$errorMessages = $this->errors;
 
-                return $errorMessages;
+                return $this->errors;
 
             //throw new Exception('Validation errors: ' . implode(', ', $this->errors));
 
 
         }
+        return [];
 
 
 
         // Return the validated inputs as an array
-        return [
+        /*return [
             'sku' => $sku,
             'name' => $name,
             'price' => $price,
             'productType' => $productType,
             'typeValue' => $typeValue
-        ];
+        ];*/
     }
 
 

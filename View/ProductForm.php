@@ -11,18 +11,18 @@ use Controller\FormController;
 
 $fetch = new ProductFetcher();
 
+
 if (isset($_SESSION['form_errors'])) {
     $errorMessages = $_SESSION['form_errors'];
     $errorArray = explode(", ", $errorMessages);
 
     echo '<ul>';
-    var_dump($errorMessages);
+    //var_dump($errorMessages);
     foreach ($errorArray as $errorMessage){
         echo "<li>$errorMessage</li>";
+
+
     }
-
-
-
     echo '</ul>';
     // clear the session variable so the error messages don't persist after the page is reloaded
     unset($_SESSION['form_errors']);
@@ -61,8 +61,9 @@ if (isset($_SESSION['form_errors'])) {
 
         <form class="form_inputs">
             <div>
-                <label for="SKU">SKU </label>
-                <input type="text" id="sku" name="sku" placeholder="#sku"><br>
+                <label for="SKU" >SKU </label>
+                <input type="text" id="sku" name="sku" placeholder="#sku" ><br>
+
 
                 <label for="Name">Name </label>
                 <input type="text" id="name" name="name" placeholder="#name"><br>
@@ -145,15 +146,61 @@ if (isset($_SESSION['form_errors'])) {
         <p class="text-center mb-4">Scandiweb Test assignment</p>
 
 
-
-
-
-
-
-
     </form>
 
+    <div id="validationresult"></div>
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#product_form").submit(function (event){
+                event.preventDefault();
+
+                // Get all input values
+                var inputValues = {
+                    sku: $("#sku").val(),
+                    name: $("#name").val(),
+                    price: $("#price").val(),
+                    productType: $("#productType").val(),
+                    weight: $("#weight").val(),
+                    size: $("#size").val(),
+                    height: $("#height").val(),
+                    width: $("#width").val(),
+                    length: $("#length").val()
+                };
+
+                // Send the data using post
+                $.ajax({
+                    url: "../Controller/FormController.php",
+                    type: "POST",
+                    data: inputValues,
+                    success: function(data) {
+
+
+
+                        let parse = JSON.parse(data)
+                        console.log(parse)
+
+
+                        if (parse.message === "success") {
+                            window.location.href = 'ProductList.php';
+
+
+                        }
+                        if(parse.message === "failure"){
+                            $("#validationresult").html("There was a problem ");
+                        }
+
+                        if(typeof(parse.message) === "object"){
+                            $("#validationresult").html(JSON.stringify(parse.message));
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 
 </main>
 </body>
