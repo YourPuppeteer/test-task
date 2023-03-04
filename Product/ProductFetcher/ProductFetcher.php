@@ -1,19 +1,13 @@
 <?php
+
 namespace Product\ProductFetcher;
 
-
 use PDO;
-use Product\Main\Product;
 use src\Database;
-use Product\DVD\DVD;
-use Product\Book\Book;
-use Product\Furniture\Furniture;
 
 class ProductFetcher
 {
     private $db;
-
-
 
     public function __construct()
     {
@@ -23,10 +17,10 @@ class ProductFetcher
     public function fetchProducts()
     {
         $classMap = [
-        'DVD' => 'DVD',
-        'Book' => 'Book',
-        'Furniture' => 'Furniture',
-    ];
+            'DVD' => 'DVD',
+            'Book' => 'Book',
+            'Furniture' => 'Furniture',
+        ];
 
         $conn = $this->db->getConnection();
         $sql = "SELECT * FROM `products`";
@@ -37,7 +31,7 @@ class ProductFetcher
         $products = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $class = "Product\\" .  $classMap[$row['Type']] . "\\" . $classMap[$row['Type']];
+            $class = "Product\\" . $classMap[$row['Type']] . "\\" . $classMap[$row['Type']];
             $product = new $class($row['SKU'], $row['Name'], $row['Price'], $row['TypeValue']);
 
             $productInformation = $product->getProduct();
@@ -46,6 +40,4 @@ class ProductFetcher
 
         return $products;
     }
-
-
 }

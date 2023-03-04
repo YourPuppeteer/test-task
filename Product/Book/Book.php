@@ -2,13 +2,11 @@
 
 namespace Product\Book;
 
-
 use Product\Main\Product;
 
-class Book extends Product{
+class Book extends Product
+{
     private $typeValue;
-
-
 
     public function __construct($sku, $name, $price, $typeValue)
     {
@@ -16,9 +14,11 @@ class Book extends Product{
         $this->typeValue = $typeValue;
     }
 
-    public function setTypeValue($typeValue)
+    public function getProduct()
     {
-        $this->typeValue = $typeValue;
+        // TODO: Implement getProduct() method.
+        return "SKU:" . $this->getSKU() . " /" . $this->getName() . "/" . $this->getPrice(
+            ) . " $" . "/" . "Weight: " . $this->getTypeValue();
     }
 
     public function getTypeValue()
@@ -26,9 +26,8 @@ class Book extends Product{
         return $this->typeValue;
     }
 
-    public function getProduct()
+    public function setTypeValue($typeValue)
     {
-        // TODO: Implement getProduct() method.
-        return "SKU:" .  $this->getSKU() .  " /" . $this->getName() . "/" . $this->getPrice() ." $". "/" . "Weight: ". $this->getTypeValue();
+        $this->typeValue = $typeValue;
     }
 }

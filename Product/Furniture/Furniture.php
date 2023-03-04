@@ -4,11 +4,9 @@ namespace Product\Furniture;
 
 use Product\Main\Product;
 
-class Furniture extends Product{
+class Furniture extends Product
+{
     private $typeValue;
-
-
-
 
     public function __construct($sku, $name, $price, $typeValue)
     {
@@ -16,9 +14,11 @@ class Furniture extends Product{
         $this->typeValue = $typeValue;
     }
 
-    public function setTypeValue($typeValue)
+    public function getProduct()
     {
-        $this->typeValue = $typeValue;
+        // TODO: Implement getProduct() method.
+        return "SKU:" . $this->getSKU() . "/" . $this->getName() . "/" . $this->getPrice(
+            ) . " $" . "/" . "Dimensions: " . $this->getTypeValue();
     }
 
     public function getTypeValue()
@@ -26,10 +26,8 @@ class Furniture extends Product{
         return $this->typeValue;
     }
 
-
-    public function getProduct()
+    public function setTypeValue($typeValue)
     {
-        // TODO: Implement getProduct() method.
-        return   "SKU:" .  $this->getSKU() . "/" . $this->getName() . "/" . $this->getPrice() ." $". "/". "Dimensions: " . $this->getTypeValue();
+        $this->typeValue = $typeValue;
     }
 }

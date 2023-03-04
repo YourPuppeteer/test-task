@@ -1,58 +1,40 @@
 <?php
+
 namespace Product\Validation;
 
-
-use Exception;
 use PDO;
 use src\Database;
 
-
-class Validator {
+class Validator
+{
     private $errors = [];
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function validate($sku, $name, $price, $productType, $typeValue) {
+    public function validate($sku, $name, $price, $productType, $typeValue)
+    {
         $this->validateSku($sku);
         $this->validateName($name);
         $this->validatePrice($price);
         $this->validateProductType($productType);
         $this->validateTypeValue($typeValue);
 
-        // Throw an exception if there are any errors
-
+        //If $errors is not empty, return errors
         if (!empty($this->errors)) {
-            //$errorMessages = implode(', ', $this->errors);
-            //$errorMessages = $this->errors;
-
-                return $this->errors;
-
-            //throw new Exception('Validation errors: ' . implode(', ', $this->errors));
-
-
+            return $this->errors;
         }
         return [];
-
-
-
-        // Return the validated inputs as an array
-        /*return [
-            'sku' => $sku,
-            'name' => $name,
-            'price' => $price,
-            'productType' => $productType,
-            'typeValue' => $typeValue
-        ];*/
     }
 
-
-    private function validateSku($sku) {
+    private function validateSku($sku)
+    {
         // Check if the SKU is not empty
         if (empty($sku)) {
-            $this->errors['sku'] = "SKU cannot be empty.";
+            $this->errors['sku'] = "SKU should not be empty.";
         }
 
         // Check if the SKU already exists in the database
@@ -66,43 +48,50 @@ class Validator {
         }
     }
 
-    private function validateName($name) {
-        if(empty($name)){
+    private function validateName($name)
+    {
+        if (empty($name)) {
             $this->errors['name'] = "Name should not be empty";
         }
     }
 
-    private function validatePrice($price) {
+    private function validatePrice($price)
+    {
+        $values = (float)$price;
 
-        $values = (float) $price;
+        if (empty($values)){
+            $this->errors['price'] = "Price should not be empty.";
+            return;
+
+        }
 
         if ($values <= 0) {
             $this->errors['price'] = 'Price must be a number.';
-
         }
     }
 
-    private function validateProductType($productType) {
-        $allowedProductTypes = ['DVD' , 'Book', 'Furniture'];
+    private function validateProductType($productType)
+    {
+        $allowedProductTypes = ['DVD', 'Book', 'Furniture'];
 
-        if(!in_array($productType, $allowedProductTypes)){
+        if (!in_array($productType, $allowedProductTypes)) {
             $this->errors['productType'] = "Product type should be DVD, Book or Furniture";
         }
-
     }
 
-    private function validateTypeValue($typeValue) {
+    private function validateTypeValue($typeValue)
+    {
+        $values = explode('x', $typeValue);
 
-
-            $values = explode('x', $typeValue);
-
-
-
-
-            foreach ($values as $value) {
-                if ( $value <= 0) {
-                    $this->errors['typeValue'] = 'TypeValue dimensions must be number.';
-                }
+        foreach ($values as $value) {
+            if(empty($value)){
+                $this->errors['typeValue'] = 'TypeValue dimensions should not be empty.';
+                return;
             }
+            if ($value <= 0) {
+                $this->errors['typeValue'] = 'TypeValue dimensions must be number.';
+
+            }
+        }
     }
 }

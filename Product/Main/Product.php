@@ -1,26 +1,18 @@
 <?php
+
 namespace Product\Main;
 
-
-abstract class Product{
+abstract class Product
+{
     protected $sku;
     protected $name;
     protected $price;
 
-
-
-
-
-    public function __construct($sku,$name,$price)
+    public function __construct($sku, $name, $price)
     {
         $this->sku = $sku;
         $this->name = $name;
         $this->price = $price;
-    }
-
-    public function setSKU($sku)
-    {
-        $this->sku = $sku;
     }
 
     public function getSKU()
@@ -28,9 +20,9 @@ abstract class Product{
         return $this->sku;
     }
 
-    public function setName($name)
+    public function setSKU($sku)
     {
-        $this->name = $name;
+        $this->sku = $sku;
     }
 
     public function getName()
@@ -38,14 +30,19 @@ abstract class Product{
         return $this->name;
     }
 
-    public function setPrice($price)
+    public function setName($name)
     {
-        $this->price = $price;
+        $this->name = $name;
     }
 
     public function getPrice()
     {
         return $this->price;
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
     }
 
     abstract public function getProduct();

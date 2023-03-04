@@ -1,20 +1,21 @@
 <?php
 namespace Controller;
-require_once ('../vendor/autoload.php');
+session_start();
 
-use PDO;
+require_once('../vendor/autoload.php');
+
 use src\Database;
-use View;
-
-
-class ProductController {
+class ProductController
+{
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function deleteProducts($selectedProducts) {
+    public function deleteProducts($selectedProducts)
+    {
         foreach ($selectedProducts as $product) {
             $skuValue = explode(' ', $product)[0];
             $skuValue = str_replace(' ', '', $skuValue);
@@ -24,7 +25,8 @@ class ProductController {
             $stmt->execute();
         }
 
-        header('Location: ../View/ProductList.php');
+
+        header('Location:' . $_SESSION['url']);
         exit();
     }
 }

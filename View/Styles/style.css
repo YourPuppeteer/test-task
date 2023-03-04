@@ -59,19 +59,42 @@ main {
   left: 1rem;
 }
 
-.form {
-  width: 100%;
-}
-
-.form_inputs {
-  display: flex;
-  flex-direction: column;
-}
-
 .add_button {
   color: transparent;
   cursor: auto;
   text-decoration: none;
+}
+
+.col-form-label {
+  width: 100px;
+  margin-left: 50px;
+}
+
+label {
+  font-family: Arial, sans-serif;
+}
+
+span {
+  color: red;
+}
+
+.type_description {
+  margin-left: 50px;
+}
+
+.form-input {
+  width: 250px !important;
+}
+
+.error-message {
+  margin-left: 15px;
+}
+
+.type-class label {
+  width: 150px !important;
+}
+.type-class select {
+  width: 150px !important;
 }
 
 /*# sourceMappingURL=style.css.map */

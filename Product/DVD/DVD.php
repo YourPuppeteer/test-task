@@ -4,12 +4,9 @@ namespace Product\DVD;
 
 use Product\Main\Product;
 
-class DVD extends Product{
+class DVD extends Product
+{
     private $typeValue;
-
-
-
-
 
     public function __construct($sku, $name, $price, $typeValue)
     {
@@ -17,9 +14,11 @@ class DVD extends Product{
         $this->typeValue = $typeValue;
     }
 
-    public function setTypeValue($typeValue)
+    public function getProduct()
     {
-        $this->typeValue = $typeValue;
+        // TODO: Implement getProduct() method.
+        return "SKU:" . $this->getSKU() . "/" . $this->getName() . "/" . $this->getPrice(
+            ) . " $" . "/" . "Size: " . $this->getTypeValue();
     }
 
     public function getTypeValue()
@@ -27,10 +26,8 @@ class DVD extends Product{
         return $this->typeValue;
     }
 
-    public function getProduct()
+    public function setTypeValue($typeValue)
     {
-        // TODO: Implement getProduct() method.
-        return "SKU:" .  $this->getSKU() .  "/" . $this->getName() . "/" . $this->getPrice() ." $". "/" . "Size: " .$this->getTypeValue();
-
+        $this->typeValue = $typeValue;
     }
 }
