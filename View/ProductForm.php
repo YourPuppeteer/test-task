@@ -25,7 +25,7 @@ namespace View;
         <header class="mb-4">
             <h1>Product Add</h1>
             <div class="actions">
-                <button type="submit">SAVE</button>
+                <button type="submit" class="buttons-w">SAVE</button>
                 <a href="<?php echo $_SESSION['url']?>/../">
                     <button type="button">CANCEL</button>
                 </a>
@@ -36,7 +36,7 @@ namespace View;
 
         <form class="form_inputs">
             <div class="row flex-row">
-                <div class="d-flex mb-3">
+                <div class="d-flex mb-3" >
                     <label for="SKU" class="col-form-label">SKU </label>
                     <input type="text" class="form-control form-input" id="sku" name="sku" placeholder="#sku"><br>
                     <span class="error-message" id="sku-error"></span>
@@ -48,6 +48,8 @@ namespace View;
                     <input type="text" class="form-control form-input" id="name" name="name" placeholder="#name"><br>
                     <span class="error-message" id="name-error"></span>
                 </div >
+
+
 
                 <div class="d-flex mb-3">
                     <label for="Price" class="col-form-label">Price ($)</label>
@@ -119,9 +121,6 @@ namespace View;
                         <p class="type_description">Please provide dimensions in HxWxL format</p>
 
 
-
-
-
                     </div>
 
 
@@ -147,4 +146,5 @@ namespace View;
 </body>
 <script src="<?php echo $_SESSION['url']?>/../View/js/validation-ajax-jquery.js"></script>
 <script src="<?php echo $_SESSION['url']?>/../View/js/product-form.js"></script>
+
 </html>

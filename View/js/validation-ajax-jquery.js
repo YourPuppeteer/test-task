@@ -22,13 +22,12 @@ $(document).ready(function () {
             data: inputValues,
             success: function (data) {
 
-
                 let parse = JSON.parse(data)
-                console.log(inputValues)
-                console.log(parse.message)
+
 
 
                 if (parse.message === "success") {
+
                     window.location.href = '/scandiweb';
 
                 }
@@ -45,7 +44,6 @@ $(document).ready(function () {
                             let errorMessage = parse.message[key];
                             let inputFieldId = "#" + key;
 
-                            console.log(errorMessage)
                             // Update the error message container for the input field
                             $(inputFieldId + "-error").html(errorMessage);
 

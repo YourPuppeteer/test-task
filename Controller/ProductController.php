@@ -26,7 +26,9 @@ class ProductController
         }
 
 
-        header('Location:' . $_SESSION['url']);
+       /* header('Location:' . $_SESSION['url']);
+        exit();*/
+        echo json_encode(array('message' => "success"));
         exit();
     }
 }
