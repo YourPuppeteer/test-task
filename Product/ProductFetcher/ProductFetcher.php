@@ -5,6 +5,7 @@ namespace Product\ProductFetcher;
 use PDO;
 use src\Database;
 
+
 class ProductFetcher
 {
     private $db;

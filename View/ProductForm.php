@@ -95,7 +95,7 @@ namespace View;
                         <p class="type_description">Please provide weight (in KG) </p>
                     </div>
 
-                    <div v-if="selectedType === 'Furniture'" class="row">
+                    <div v-if="selectedType === 'Furniture'">
 
                         <div class="d-flex mb-3">
                             <label for="height" class="col-form-label">Height:</label>
@@ -124,8 +124,12 @@ namespace View;
                     </div>
 
 
+
                 </template>
                 <!--Type Switcher vue -->
+
+
+
 
 
             </div>
@@ -146,5 +150,6 @@ namespace View;
 </body>
 <script src="<?php echo $_SESSION['url']?>/../View/js/validation-ajax-jquery.js"></script>
 <script src="<?php echo $_SESSION['url']?>/../View/js/product-form.js"></script>
+
 
 </html>

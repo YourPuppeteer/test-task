@@ -3,7 +3,8 @@ $(document).ready(function () {
         event.preventDefault();
 
         // Get all checked products
-        var selectedProducts = $('input[name="selected_products[]"]:checked').map(function() {
+        var selectedProducts =
+            $('input[name="selected_products[]"]:checked').map(function() {
             return this.value;
         }).get();
 
@@ -11,10 +12,11 @@ $(document).ready(function () {
 
         // Send the data using post
         $.ajax({
-            url: "/scandiweb/Controller/ProductController.php",
+            url: "/scandiweb/router/router.php",
             type: "POST",
-            data: { selected_products: selectedProducts },
+            data: { delete_data: selectedProducts },
             success: function (data) {
+                console.log(data)
 
                 let parse = JSON.parse(data)
 
@@ -27,3 +29,32 @@ $(document).ready(function () {
         });
     });
 });
+
+
+
+
+
+/*
+var selectedProducts = [];
+
+const app = new Vue({
+    el: '#app',
+    methods: {
+        submitForm() {
+            // Send the data using axios post
+            axios.post('/scandiweb/Controller/ProductController.php', {
+                selected_products: selectedProducts
+            })
+                .then(response => {
+                    let parse = response.data;
+                    if (parse.message === "success") {
+                        selectedProducts = [];
+                        $('#product_form').load('/scandiweb #product_form>*');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    }
+});*/

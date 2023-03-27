@@ -2,25 +2,30 @@ $(document).ready(function () {
     $("#product_form").submit(function (event) {
         event.preventDefault();
 
+
         // Get all input values
         var inputValues = {
-            sku: $("#sku").val(),
-            name: $("#name").val(),
-            price: $("#price").val(),
-            productType: $("#productType").val(),
-            weight: $("#weight").val(),
-            size: $("#size").val(),
-            height: $("#height").val(),
-            width: $("#width").val(),
-            length: $("#length").val()
+            add_data:{
+                sku: $("#sku").val(),
+                name: $("#name").val(),
+                price: $("#price").val(),
+                productType: $("#productType").val(),
+                weight: $("#weight").val(),
+                size: $("#size").val(),
+                height: $("#height").val(),
+                width: $("#width").val(),
+                length: $("#length").val()
+            }
+
         };
 
         // Send the data using post
         $.ajax({
-            url: "/scandiweb/Controller/FormController.php",
+            url: "/scandiweb/router/router.php",
             type: "POST",
             data: inputValues,
             success: function (data) {
+                console.log(data);
 
                 let parse = JSON.parse(data)
 

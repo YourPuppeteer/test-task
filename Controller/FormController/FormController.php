@@ -1,17 +1,13 @@
 <?php
-namespace Controller;
+namespace Controller\FormController;
 
 require_once('../vendor/autoload.php');
 
-use PDO;
-use Product\Validation\Validator;
 use Product\ProductSave\ProductSave;
-use src\Database;
-use View;
+use Product\Validation\Validator;
 
 class FormController
 {
-    private $db;
     private $validator;
     private $productSave;
     private $sku;
@@ -20,17 +16,22 @@ class FormController
     private $productType;
     private $typeValue;
 
-    public function __construct($sku, $name, $price, $productType, $typeValue)
+    public function __construct($postData)
     {
-        $this->db = Database::getInstance()->getConnection();
         $this->validator = new Validator();
         $this->productSave = new ProductSave();
 
-        $this->sku = $sku;
-        $this->name = $name;
-        $this->price = $price;
-        $this->productType = $productType;
-        $this->typeValue = $typeValue;
+        $this->sku = $postData['sku'];
+        $this->name = $postData['name'];
+        $this->price = $postData['price'];
+        $this->productType = $postData['productType'];
+
+        $dimensionsMap = [
+            'DVD' => $postData['weight'] ?? '',
+            'Book' => $postData['size'] ?? '',
+            'Furniture' => isset($postData['height'], $postData['width'], $postData['length']) ? $postData['height'] . 'x' . $postData['width'] . 'x' . $postData['length'] : '',
+        ];
+        $this->typeValue = $dimensionsMap[$this->productType] ?? '';
     }
 
     public function addProduct()
@@ -62,9 +63,5 @@ class FormController
     }
 }
 
-$postData = $_POST;
-
-$addProductController = new AddProductController($postData);
-$addProductController->handleFormSubmission();
 
 

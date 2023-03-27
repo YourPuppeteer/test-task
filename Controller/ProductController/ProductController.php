@@ -1,10 +1,11 @@
 <?php
-namespace Controller;
+namespace Controller\ProductController;
 session_start();
 
 require_once('../vendor/autoload.php');
 
 use src\Database;
+
 class ProductController
 {
     private $db;
@@ -32,9 +33,4 @@ class ProductController
         exit();
     }
 }
-
-// Instantiate the product controller and call the deleteProducts method
-$productController = new ProductController();
-$productController->deleteProducts($_POST['selected_products']);
-
 
