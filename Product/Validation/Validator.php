@@ -34,7 +34,7 @@ class Validator
     {
         // Check if the SKU is not empty
         if (empty($sku)) {
-            $this->errors['sku'] = "SKU should not be empty.";
+            $this->errors['sku'] = "Please, submit required data.";
         }
 
         // Check if the SKU already exists in the database
@@ -51,7 +51,7 @@ class Validator
     private function validateName($name)
     {
         if (empty($name)) {
-            $this->errors['name'] = "Name should not be empty";
+            $this->errors['name'] = "Please, submit required data";
         }
     }
 
@@ -60,13 +60,13 @@ class Validator
         $values = (float)$price;
 
         if (empty($values)){
-            $this->errors['price'] = "Price should not be empty.";
+            $this->errors['price'] = "Please, submit required data.";
             return;
 
         }
 
         if ($values <= 0) {
-            $this->errors['price'] = 'Price must be a number.';
+            $this->errors['price'] = 'Please, provide the data of indicated type.';
         }
     }
 
@@ -75,7 +75,7 @@ class Validator
         $allowedProductTypes = ['DVD', 'Book', 'Furniture'];
 
         if (!in_array($productType, $allowedProductTypes)) {
-            $this->errors['productType'] = "Product type should be DVD, Book or Furniture";
+            $this->errors['productType'] = "Please, provide the data of indicated type";
         }
     }
 
@@ -89,7 +89,7 @@ class Validator
                 return;
             }
             if ($value <= 0) {
-                $this->errors['typeValue'] = 'TypeValue dimensions must be number.';
+                $this->errors['typeValue'] = 'Please, provide the data of indicated type.';
 
             }
         }

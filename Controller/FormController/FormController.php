@@ -3,7 +3,7 @@ namespace Controller\FormController;
 
 require_once('../vendor/autoload.php');
 
-use Product\ProductSave\ProductSave;
+use Helpers\ProductSave;
 use Product\Validation\Validator;
 
 class FormController

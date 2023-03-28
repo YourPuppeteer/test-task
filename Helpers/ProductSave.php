@@ -1,6 +1,6 @@
 <?php
 
-namespace Product\ProductSave;
+namespace Helpers;
 
 use src\Database;
 

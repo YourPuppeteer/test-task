@@ -5,7 +5,8 @@
             "IVas\\Scandiweb\\": "src/",
             "src\\": "src/",
             "Product\\" : "Product/",
-            "Controller\\": "Controller/"
+            "Controller\\": "Controller/",
+            "Helpers\\": "Helpers/"
 
 
         }

@@ -18,7 +18,7 @@ class Furniture extends Product
     {
         // TODO: Implement getProduct() method.
         return "SKU:" . $this->getSKU() . "/" . $this->getName() . "/" . $this->getPrice(
-            ) . " $" . "/" . "Dimensions: " . $this->getTypeValue();
+            ) . ".00 $" . "/" . "Dimensions: " . $this->getTypeValue();
     }
 
     public function getTypeValue()

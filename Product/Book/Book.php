@@ -18,7 +18,7 @@ class Book extends Product
     {
         // TODO: Implement getProduct() method.
         return "SKU:" . $this->getSKU() . " /" . $this->getName() . "/" . $this->getPrice(
-            ) . " $" . "/" . "Weight: " . $this->getTypeValue();
+            ) . ".00 $" . "/" . "Weight: " . $this->getTypeValue() . "KG";
     }
 
     public function getTypeValue()

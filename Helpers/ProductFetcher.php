@@ -1,6 +1,6 @@
 <?php
 
-namespace Product\ProductFetcher;
+namespace Helpers;
 
 use PDO;
 use src\Database;

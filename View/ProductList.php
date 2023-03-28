@@ -8,7 +8,7 @@ $root = __DIR__ . "\\..\\";
 
 require_once ($root .  "\\vendor\\autoload.php");
 
-use Product\ProductFetcher\ProductFetcher;
+use Helpers\ProductFetcher;
 
 $fetch = new ProductFetcher();
 
