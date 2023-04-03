@@ -7,15 +7,14 @@ use PDOException;
 
 class Database
 {
-
     public static $instance = null;
     private $conn;
 
     private function __construct()
     {
         $servername = "127.0.0.1";
-        $username = "root";
-        $password = "";
+        $username = "scandiwebuser";
+        $password = "+-yU+KywMf?ucW6A";
         $dbname = "scandiweb";
 
         try {
@@ -39,7 +38,6 @@ class Database
     {
         return $this->conn;
     }
-
 
 }
 

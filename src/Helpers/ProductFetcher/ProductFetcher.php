@@ -1,6 +1,6 @@
 <?php
 
-namespace Scandiweb\Helpers;
+namespace Scandiweb\Helpers\ProductFetcher;
 
 use PDO;
 use Scandiweb\Database\Database;
@@ -32,8 +32,8 @@ class ProductFetcher
         $products = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $class = "Scandiweb\\Product\\" . $classMap[$row['Type']] . "\\" . $classMap[$row['Type']];
-            $product = new $class($row['SKU'], $row['Name'], $row['Price'], $row['TypeValue']);
+            $class = "Scandiweb\\Product\\" . $classMap[$row['type']] . "\\" . $classMap[$row['type']];
+            $product = new $class($row['sku'], $row['name'], $row['price'], $row['type_value']);
 
             $productInformation = $product->getProduct();
             $products[] = $productInformation;

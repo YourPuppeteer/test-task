@@ -1,6 +1,6 @@
 <?php
 
-namespace Scandiweb\Helpers;
+namespace Scandiweb\Helpers\ProductSave;
 
 use Scandiweb\Database\Database;
 
@@ -13,15 +13,15 @@ class ProductSave
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function saveProduct($sku, $name, $price, $productType, $typeValue)
+    public function saveProduct($sku, $name, $price, $product_type, $type_value)
     {
-        $sql = "INSERT INTO products (SKU, Name, Price, Type, TypeValue) VALUES (:sku, :name, :price, :type, :typeValue)";
+        $sql = "INSERT INTO products (sku, name, price, type, type_value) VALUES (:sku, :name, :price, :type, :type_value)";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':sku', $sku);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':price', $price);
-        $stmt->bindParam(':type', $productType);
-        $stmt->bindParam(':typeValue', $typeValue);
+        $stmt->bindParam(':type', $product_type);
+        $stmt->bindParam(':type_value', $type_value);
         return $stmt->execute();
     }
 }

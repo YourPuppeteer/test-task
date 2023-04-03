@@ -6,12 +6,13 @@ header {
   background-color: #f0f0f0;
   border-bottom: 2px solid black;
 
-  .actions{
+  .actions {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
     & a {
-      text-decoration: none!important;
+      text-decoration: none !important;
 
     }
 
@@ -31,11 +32,26 @@ header {
         background-color: gainsboro;
       }
 
-      &:active{
+      &:active {
         transform: translateY(4px);
       }
+
+      &:disabled {
+        transform: none;
+      }
+
     }
   }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield; /* Firefox */
 }
 
 
@@ -47,6 +63,15 @@ main {
   background-color: #f5f5f5;
 }
 
+a {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+  word-break: break-all;
+}
 
 
 .product-item {
@@ -62,7 +87,7 @@ main {
   box-sizing: border-box;
   width: 100%;
 
-  .floating-checkbox{
+  .floating-checkbox {
     position: absolute;
     top: 1rem;
     left: 1rem;
@@ -70,7 +95,7 @@ main {
 
 }
 
-.add_button{
+.add_button {
   color: transparent;
   cursor: auto;
   text-decoration: none;
@@ -78,38 +103,42 @@ main {
 
 }
 
-.col-form-label{
+.col-form-label {
   width: 100px;
   margin-left: 50px;
 
 }
+
 label {
   font-family: Arial, sans-serif;
 }
-span{
+
+span {
   color: red;
 }
 
-.type_description{
+.type_description {
   margin-left: 50px;
 }
 
 
-.form-input{
-  width: 250px!important;
+.form-input {
+  width: 250px !important;
 }
 
 
-.error-message{
+.error-message {
   margin-left: 15px;
 }
-.type-class{
+
+.type-class {
 
   label {
-    width: 150px!important;
+    width: 150px !important;
   }
-  select{
-    width: 150px!important;
+
+  select {
+    width: 150px !important;
   }
 
 }

@@ -3,12 +3,12 @@ namespace Scandiweb\Controller\FormController;
 
 require_once('../../vendor/autoload.php');
 
-use Scandiweb\Helpers\ProductSave;
-use Scandiweb\Product\Validation\Validator;
+use Scandiweb\Helpers\ProductSave\ProductSave;
+use Scandiweb\Product\Validation\Validation;
 
 class FormController
 {
-    private $validator;
+    private $validation;
     private $productSave;
     private $sku;
     private $name;
@@ -18,7 +18,7 @@ class FormController
 
     public function __construct($postData)
     {
-        $this->validator = new Validator();
+        $this->validation = new Validation();
         $this->productSave = new ProductSave();
 
         $this->sku = $postData['sku'];
@@ -37,7 +37,7 @@ class FormController
     public function addProduct()
     {
         //Validation
-        $validatedInputs = $this->validator->validate(
+        $validatedInputs = $this->validation->validate(
             $this->sku,
             $this->name,
             $this->price,
@@ -51,8 +51,6 @@ class FormController
             echo json_encode($response);
             exit();
         }
-
-        // Insert to database if no errors found
 
         if ($this->productSave->saveProduct($this->sku, $this->name, $this->price, $this->productType, $this->typeValue)) {
             echo json_encode(array('message' => "success"));

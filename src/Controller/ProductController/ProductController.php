@@ -26,9 +26,6 @@ class ProductController
             $stmt->execute();
         }
 
-
-       /* header('Location:' . $_SESSION['url']);
-        exit();*/
         echo json_encode(array('message' => "success"));
         exit();
     }

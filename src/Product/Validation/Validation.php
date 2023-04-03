@@ -5,7 +5,7 @@ namespace Scandiweb\Product\Validation;
 use PDO;
 use Scandiweb\Database\Database;
 
-class Validator
+class Validation
 {
     private $errors = [];
     private $db;
@@ -32,7 +32,6 @@ class Validator
 
     private function validateSku($sku)
     {
-
         if (empty($sku)) {
             $this->errors['sku'] = "Please, submit required data.";
         }
@@ -66,10 +65,9 @@ class Validator
     {
         $values = (float)$price;
 
-        if (empty($values)){
+        if (empty($values)) {
             $this->errors['price'] = "Please, submit required data.";
             return;
-
         }
 
         if ($values <= 0) {
@@ -91,13 +89,12 @@ class Validator
         $values = explode('x', $typeValue);
 
         foreach ($values as $value) {
-            if(empty($value)){
+            if (empty($value)) {
                 $this->errors['typeValue'] = 'TypeValue dimensions should not be empty.';
                 return;
             }
             if ($value <= 0) {
                 $this->errors['typeValue'] = 'Please, provide the data of indicated type.';
-
             }
         }
     }

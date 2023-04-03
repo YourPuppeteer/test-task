@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Product Form</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo $_SESSION['url']?>/../src/public/Styles/style.css">
+    <link rel="stylesheet" type="text/css" href="src/public/styles/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -19,11 +19,8 @@
         <header class="mb-4">
             <h1>Product Add</h1>
             <div class="actions">
-                <button  id="submit-button" class="buttons-w">SAVE</button>
-                <a href="<?php echo $_SESSION['url']?>/../">
-                    <button type="button">CANCEL</button>
-                </a>
-
+                <button  id="submit-button" class="buttons-w">Save</button>
+                <button onclick="history.back()" type="button">Cancel</button>
             </div>
         </header>
 
@@ -47,7 +44,7 @@
 
                 <div class="d-flex mb-3">
                     <label for="Price" class="col-form-label">Price ($)</label>
-                    <input type="number" class="form-control form-input" id="price" name="price" placeholder="#price"><br>
+                    <input type="number" step="any" class="form-control form-input" id="price" name="price" placeholder="#price"><br>
                     <span class="error-message" id="price-error"></span>
                 </div>
 
@@ -87,8 +84,8 @@
 
 </main>
 </body>
-<script src="<?php echo $_SESSION['url']?>/../src/public/js/type-switcher.js"></script>
-<script src="<?php echo $_SESSION['url']?>/../src/public/js/front-validation.js"></script>
+<script src="src/public/js/type-switcher.js"></script>
+<script src="src/public/js/front-validation.js"></script>
 <!--<script src="<?php echo $_SESSION['url']?>/../View/js/back-validation.js"></script>-->
 
 

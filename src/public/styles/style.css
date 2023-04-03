@@ -32,12 +32,35 @@ header .actions button:hover {
 header .actions button:active {
   transform: translateY(4px);
 }
+header .actions button:disabled {
+  transform: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield; /* Firefox */
+}
 
 main {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 1rem;
   background-color: #f5f5f5;
+}
+
+a {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .product-item {

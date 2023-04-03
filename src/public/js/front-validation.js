@@ -1,7 +1,7 @@
 const form = document.querySelector('#product_form');
 
 // add event listener to form submit event
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', function (event) {
     event.preventDefault();
 
     const skuRegex = /^[a-zA-Z0-9-]+$/;
@@ -34,15 +34,14 @@ form.addEventListener('submit', function(event) {
     if (skuInput.value.trim() === '') {
         skuError.textContent = 'Please, submit required data';
         errors = true;
-    } else if(skuInput.value.trim() < 4 || skuInput.value.trim() > 16){
+    } else if (skuInput.value.trim().length < 4 || skuInput.value.trim().length > 16) {
         skuError.textContent = 'SKU must be between 4 and 16 characters long';
         errors = true;
 
-    }else if (!skuRegex.test(skuInput.value.trim())) {
+    } else if (!skuRegex.test(skuInput.value.trim())) {
         skuError.textContent = "SKU must contain only alphanumeric characters and dashes";
         errors = true;
-    }
-    else{
+    } else {
         skuError.textContent = '';
     }
 
@@ -59,6 +58,9 @@ form.addEventListener('submit', function(event) {
     if (priceInput.value.trim() === '') {
         priceError.textContent = 'Please, submit required data';
         errors = true;
+    } else if (priceInput.value.trim() <= 0) {
+        priceError.textContent = 'Value should be greater than 0';
+        errors = true;
     } else {
         priceError.textContent = '';
     }
@@ -71,17 +73,17 @@ form.addEventListener('submit', function(event) {
         typeError.textContent = '';
     }
 
-  //TypeValue front validation
-  if(typeInput.value.trim() === 'Book'){
-      if (bookInput.value.trim() === '') {
-          typeValueError.textContent = 'Please, submit required data';
-          errors = true;
-      } else {
-          typeValueError.textContent = '';
-      }
-  }
+    //TypeValue front validation
+    if (typeInput.value.trim() === 'Book') {
+        if (bookInput.value.trim() === '') {
+            typeValueError.textContent = 'Please, submit required data';
+            errors = true;
+        } else {
+            typeValueError.textContent = '';
+        }
+    }
 
-    if(typeInput.value.trim() === 'DVD') {
+    if (typeInput.value.trim() === 'DVD') {
         if (dvdInput.value.trim() === '') {
             typeValueError.textContent = 'Please, submit required data';
             errors = true;
@@ -90,27 +92,22 @@ form.addEventListener('submit', function(event) {
         }
     }
 
-    if(typeInput.value.trim() === 'Furniture') {
-        if (heightInput.value.trim() === '') {
+    if (typeInput.value.trim() === 'Furniture') {
+        if (heightInput.value.trim() === '' || widthInput.value.trim() === '' || lengthInput.value.trim() === '') {
             typeValueError.textContent = 'Please, submit required data';
             errors = true;
         } else {
             typeValueError.textContent = '';
+
+
+            if (heightInput.value.trim() <= 0 || widthInput.value.trim() <= 0 || lengthInput.value.trim() <= 0) {
+                typeValueError.textContent = 'Value should be greater than 0';
+                errors = true;
+            } else {
+                typeValueError.textContent = '';
+            }
         }
 
-        if (widthInput.value.trim() === '') {
-            typeValueError.textContent = 'Please, submit required data';
-            errors = true;
-        } else {
-            typeValueError.textContent = '';
-        }
-
-        if (lengthInput.value.trim() === '') {
-            typeValueError.textContent = 'Please, submit required data';
-            errors = true;
-        } else {
-            typeValueError.textContent = '';
-        }
     }
 
     // submit form if there are no errors
@@ -118,7 +115,7 @@ form.addEventListener('submit', function(event) {
 
         // Get all input values
         const inputValues = {
-            add_data:{
+            add_data: {
                 sku: skuInput.value,
                 name: nameInput.value,
                 price: priceInput.value,
@@ -133,7 +130,7 @@ form.addEventListener('submit', function(event) {
 
         // Send the data using post
         $.ajax({
-            url: "/scandiweb/src/router/router.php",
+            url: "src/router/router.php",
             type: "POST",
             data: inputValues,
             success: function (data) {
@@ -142,7 +139,7 @@ form.addEventListener('submit', function(event) {
                 const parse = JSON.parse(data)
 
                 if (parse.message === "success") {
-                    window.location.href = '/scandiweb';
+                    window.location.href = document.referrer;
                 }
 
                 if (parse.message === "failure") {
