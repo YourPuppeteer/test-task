@@ -29,7 +29,7 @@ $fetch = new ProductFetcher();
                 <header class="mb-4">
                     <h1>Product List</h1>
                     <div class="actions">
-                        <button type="button" onclick="window.location.href='add-product'">ADD</button>
+                        <button type="button" id="add_button">ADD</button>
                         <button type="button" id="delete-product-btn" name="delete-product-btn">MASS DELETE</button>
                     </div>
                 </header>

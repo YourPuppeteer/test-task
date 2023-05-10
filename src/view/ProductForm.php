@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Product Form</title>
-    <link rel="stylesheet" type="text/css" href="src/public/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="../src/public/styles/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -84,11 +84,8 @@
 
 </main>
 </body>
-<script src="src/public/js/type-switcher.js"></script>
-<script src="src/public/js/front-validation.js"></script>
+<script src="../src/public/js/type-switcher.js"></script>
+<script src="../src/public/js/front-validation.js"></script>
 <!--<script src="<?php echo $_SESSION['url']?>/../View/js/back-validation.js"></script>-->
-
-
-
 
 </html>

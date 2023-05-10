@@ -3,6 +3,9 @@ $(document).ready(function () {
     var $deleteButton = $('#delete-product-btn');
     $deleteButton.on('click', deleteButton);
 
+    var $addButton = $('#add_button');
+    $addButton.on('click', addButton);
+
 });
 
 function deleteButton(event) {
@@ -14,7 +17,7 @@ function deleteButton(event) {
 
         // Send the data using post
         $.ajax({
-            url: "src/router/router.php",
+            url: "index.php",
             type: "POST",
             data: {delete_data: selectedProducts},
             success: function (data) {
@@ -30,4 +33,11 @@ function deleteButton(event) {
             }
         });
     }
+}
+
+function addButton(event){
+    event.preventDefault();
+
+    window.location.href = "../scandiweb/add-product";
+
 }

@@ -1,8 +1,6 @@
 <?php
 namespace Scandiweb\Controller\FormController;
 
-require_once('../../vendor/autoload.php');
-
 use Scandiweb\Helpers\ProductSave\ProductSave;
 use Scandiweb\Product\Validation\Validation;
 

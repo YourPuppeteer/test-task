@@ -1,6 +1,13 @@
-php_value display_errors 1
 RewriteEngine on
 
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^(.*)$ $1.php [NC,L]
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/scandiweb/$1 [R=301,L]
+
+RewriteRule \.(css|jpe?g|gif|png)$ - [L]
+
+RewriteCond %{REQUEST_URI} ^/[^\.]+[^/]$
+RewriteRule ^(.*)$ http://%{HTTP_HOST}/scandiweb/$1/ [R=301,L]
+
+RewriteRule ^([^/\.]+)/?$ /scandiweb/index.php?page=$1 [L]
+RewriteRule ^([^/\.]+)/([^/\.]+)/?$ /scandiweb/index.php?section=$1&page=$2 [L]
+RewriteRule ^([^/\.]+)/([^/\.]+)/([^/\.]+)/?$ /scandiweb/index.php?section=$1&subsection=$2&page=$3 [L]

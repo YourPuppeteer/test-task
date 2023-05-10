@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once('./vendor/autoload.php');
 
-include 'src/view/ProductList.php';
+include 'src/router/router.php';
+
 exit;

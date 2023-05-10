@@ -130,16 +130,17 @@ form.addEventListener('submit', function (event) {
 
         // Send the data using post
         $.ajax({
-            url: "src/router/router.php",
+            url: "../index.php",
             type: "POST",
             data: inputValues,
             success: function (data) {
                 console.log(data);
 
                 const parse = JSON.parse(data)
+                console.log(document.referrer)
 
                 if (parse.message === "success") {
-                    window.location.href = document.referrer;
+                    window.location.href = "../";
                 }
 
                 if (parse.message === "failure") {
